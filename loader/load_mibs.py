@@ -45,18 +45,18 @@ def load_mibs(mib_names, compiled_mib_path = None, dependant_mib_path = None, so
 
     dependant_mib_path_uri = [pathlib.Path(each_path).as_uri().replace('///', '//') if os.path.sep != '/' else pathlib.Path(each_path).as_uri() for each_path in dependant_mib_path]
 
-    logger.error(source_mib_path_uri)
+    logger.info(source_mib_path_uri)
 
-    logger.error(os.listdir(compiled_mib_path))
+    logger.info(os.listdir(compiled_mib_path))
 
-    logger.error(os.listdir(source_mib_path[0]))
+    logger.info(os.listdir(source_mib_path[0]))
 
     mib_loader = MibLoader(compiled_mib_path=compiled_mib_path, source_mib_path=source_mib_path_uri,
                            dependant_mib_paths=dependant_mib_path_uri)
 
     mib_loader.load(mib_names=mib_names)
 
-    logger.error(os.listdir(compiled_mib_path))
+    logger.info(os.listdir(compiled_mib_path))
 
     return mib_loader
 
